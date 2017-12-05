@@ -1,19 +1,35 @@
 <div class="container-fluid screen">
   <div class="container center-ban">
-    <h1>Sign up!</h1>
+    <h1 class="text-center">Sign up!</h1>
     <div class="row">
-      <%= form_with scope: :user, class: "col-sm-8 mx-auto", local: true do |form| %>
+      <%= form_with scope: :user, url: users_path, class: "col-sm-8 mx-auto", local: true do |form| %>
 
           <div class="form-group">
-            <%= form.label :username, class: "text-center"%><span class="required">*</span><br/>
-            <%= form.text_field :username, class: "form-control"%>
+            <%= form.label :first_name, class: "text-center"%><br/>
+            <%= form.text_field :first_name, class: "form-control"%>
           </div>
 
           <div class="form-group">
-            <%= form.label :email, class: "text-center"%><span class="required">*</span><br/>
+            <%= form.label :last_name, class: "text-center"%><br/>
+            <%= form.text_field :last_name, class: "form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :email, class: "text-center"%><br/>
             <%= form.text_field :email, class: "form-control"%>
           </div>
-          
+
+          <div class="form-group">
+            <%= form.label :password, class: "text-center"%><br/>
+            <%= form.password_field :password, class: "form-control"%>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :confirm_password, class: "text-center right"%><br/>
+            <%= form.password_field :confirm_password, class: "form-control"%>
+          </div>
+
+          <%= form.submit "Sign up", class: "btn btn-primary"%>
       <% end %>
     </div>
   </div>
