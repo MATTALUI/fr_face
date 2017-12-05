@@ -1,1 +1,13 @@
-<h1>add new user!</h1>
+<div class="container-fluid screen">
+  <div class="container center-ban">
+    <h1>Sign up!</h1>
+    <div class="row">
+      <%= form_with scope: :user, local: true do |form| %>
+        <div class="form-group sol-sm-6">
+          <%= form.label :username, class: ""%><span class="required">*</span><br/>
+          <%= form.text_field :username, class: "form-control"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

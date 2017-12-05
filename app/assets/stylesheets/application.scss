@@ -17,6 +17,15 @@
  //= require bootstrap
 
 .screen{
-  height: 100vh;
+  min-height: 100vh;
   background-color: lightblue;
 }
+.center-ban{
+  min-height: 100vh;
+  background-color: rgb(249,249,249);
+  // border-left: linear-gradiant(left, black, white);
+  // border-left: 10px;
+}
+// .required{
+//   color: red;
+// }
