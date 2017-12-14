@@ -1,11 +1,8 @@
 class FeedController < ApplicationController
   def index
     redirect_to root_path if not cookies.signed[:user]
-    puts
-    puts
-    puts 'index!'
-    puts cookies.signed[:user]
-    puts
-    puts
+    id = JSON.parse(cookies.signed[:user])["id"]
+    @user = User.find_by_id(id)
+    puts @user.attributes
   end
 end
