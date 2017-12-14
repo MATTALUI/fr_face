@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get '/feed', to: 'feed#index'
   get '/users/login', to: 'users#login', as: 'login'
+  post '/users/login', to: 'users#actually_login', as: 'login_action'
   resources :users
 
 

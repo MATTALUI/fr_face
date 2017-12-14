@@ -24,10 +24,32 @@ class UsersController < ApplicationController
 
     end
   end
+
   def login
-    
+    redirect_to feed_path if cookies.signed[:user]
   end
 
+  def actually_login
+    submitted_email = params[:login][:email]
+    submitted_password = params[:login][:password]
+    @user = User.find_by_email(submitted_email)
+    if @user then
+      match = (BCrypt::Password.new(@user[:password]) == submitted_password)
+      if match then
+
+      token = JSON.generate({
+        :id => @user[:id],
+        :username => @user[:username],
+        :email => @user[:email],
+        :avatar => @user[:user_image]
+      })
+      cookies.signed[:user] = token
+      redirect_to feed_path
+      end
+    else
+      redirect_to login_path
+    end
+  end
 
   private
     def new_user_params
