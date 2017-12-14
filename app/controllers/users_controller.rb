@@ -51,6 +51,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    cookies.delete :user
+    redirect_to root_path
+  end
+
   private
     def new_user_params
       return params.require(:user).permit(:first_name, :last_name, :email, :password)
