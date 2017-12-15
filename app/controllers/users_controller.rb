@@ -14,8 +14,13 @@ class UsersController < ApplicationController
       user[:password] = hashword
       @user = User.new(new_user_params)
       if @user.save then
-        puts @user
-        cookies.signed[:user] = @user[:id].to_s
+        token = JSON.generate({
+          :id => @user[:id],
+          :username => @user[:username],
+          :email => @user[:email],
+          :avatar => @user[:user_image]
+        })
+        cookies.signed[:user] = token
         redirect_to '/feed'
       else
         redirect_to '/'
