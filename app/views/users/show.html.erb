@@ -1,4 +1,14 @@
 <div class="screen">
   <%= render 'shared/navbar' %>
-  <h1>See all of <%= "#{@relevant_user.first_name} #{@relevant_user.last_name}"%>'s posts here.</h1>
+  <div class="container middle-content">
+    <% if @user.id == @relevant_user.id %>
+      <br/>
+      <%= render 'shared/new_post_form'%>
+    <hr/>
+    <% end %>
+    <br/>
+    <h6><%= "#{@relevant_user.first_name} #{@relevant_user.last_name}"%>'s posts.</h6>
+  </div>
+
+
 </div>

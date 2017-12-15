@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/users/login', to: 'users#login', as: 'login'
   get '/users/logout', to: 'users#logout', as: 'logout'
   post '/users/login', to: 'users#actually_login', as: 'login_action'
+  post '/posts/new', to: 'posts#create', as: 'posts'
   resources :users
 
 
