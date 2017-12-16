@@ -35,10 +35,6 @@ class UsersController < ApplicationController
     id = JSON.parse(cookies.signed[:user])["id"]
     @user = User.find_by_id(id)
     @relevant_user = User.find_by_id(params[:id])
-    @posts = Post.all().where(:user_id=>id)
-    puts
-    puts @posts.inspect
-    puts
   end
   def login
     redirect_to feed_path if cookies.signed[:user]
