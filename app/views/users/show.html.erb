@@ -7,16 +7,16 @@
     <hr/>
     <% end %>
     <br/>
-    <!-- <h6><%= "#{@relevant_user.first_name} #{@relevant_user.last_name}"%>'s posts.</h6> -->
-    <% @posts.each do |post| %>
-      <% poster = User.find_by_id(post[:user_id])%>
-      <div class="row">
-        <h6 class="col-sm-8 offset-sm-2"><%= "#{poster[:first_name]} #{poster[:last_name]}"%></h6>
-        <p class="col-sm-8 offset-sm-2">
-          <%= post[:body] %>
-        </p>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-sm-8 offset-sm-2 post">
+          <h6 class="postHead"><%= "#{@relevant_user[:first_name]} #{@relevant_user[:last_name]}"%></h6>
+          <p class="postBody">
+            <%= post[:body] %>
+          </p>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
 

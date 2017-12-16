@@ -32,3 +32,21 @@
 .red{
   color: red;
 }
+
+
+.postHead{
+  // background-color: rgb(230,230,230);
+  background-color: lightblue;
+  padding-left: .5em;
+  padding-right: .5em;
+}
+.post{
+  background-color: rgb(245,245,247);
+  padding: 0;
+  margin-bottom: .5em;
+  border-radius: 0 0 1em 1em;
+}
+.postBody{
+  padding-left: 1em;
+  padding-right: 1em;
+}
