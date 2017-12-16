@@ -11,7 +11,7 @@
     <% @posts.each do |post| %>
       <% poster = User.find_by_id(post[:user_id])%>
       <div class="row">
-        <h6><%= "#{poster[:first_name]} #{poster[:last_name]}"%></h6>
+        <h6 class="col-sm-8 offset-sm-2"><%= "#{poster[:first_name]} #{poster[:last_name]}"%></h6>
         <p class="col-sm-8 offset-sm-2">
           <%= post[:body] %>
         </p>
