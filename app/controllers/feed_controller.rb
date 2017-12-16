@@ -5,6 +5,6 @@ class FeedController < ApplicationController
     end
     id = JSON.parse(cookies.signed[:user])["id"]
     @user = User.find_by_id(id)
-    # puts @user.posts
+    puts @user.attributes
   end
 end

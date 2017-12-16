@@ -1,12 +1,28 @@
 <div class="screen">
   <%= render 'shared/navbar' %>
   <div class="container middle-content">
+
+    <div class="row">
+      <div class="col-sm-10 offset-sm-1 profile">
+        <div class="row">
+          <%= image_tag @relevant_user[:user_image], class:"profilePic img-thumbnail"%>
+          <div class="col-sm-9 profileInfo">
+            <h3><%= "#{@relevant_user[:first_name]} #{@relevant_user[:last_name]}"%></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <hr/> -->
+    <br/>
+
     <% if @user.id == @relevant_user.id %>
       <br/>
       <%= render 'shared/new_post_form'%>
     <hr/>
     <% end %>
     <br/>
+
+
     <div class="row">
       <% @relevant_user.posts.each do |post| %>
         <div class="col-sm-8 offset-sm-2 post">
@@ -17,7 +33,7 @@
       </div>
       <% end %>
     </div>
+
+
   </div>
-
-
 </div>

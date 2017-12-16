@@ -24,6 +24,7 @@
 .middle-content{
   min-height: 90vh;
   background-color: white;
+  margin-top: 3.5em;
 }
 .center-ban{
   min-height: 100vh;
@@ -49,4 +50,13 @@
 .postBody{
   padding-left: 1em;
   padding-right: 1em;
+}
+.profilePic{
+  height: 10em;
+  width: 10em;
+}
+.profile{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  // background-color: rgb(79,84,89);
 }

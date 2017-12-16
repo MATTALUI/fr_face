@@ -36,6 +36,12 @@ class UsersController < ApplicationController
     @user = User.find_by_id(id)
     @relevant_user = User.find_by_id(params[:id])
   end
+
+  def edit
+    id = JSON.parse(cookies.signed[:user])["id"]
+    @user = User.find_by_id(id)
+  end
+  
   def login
     redirect_to feed_path if cookies.signed[:user]
   end
