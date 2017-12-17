@@ -53,6 +53,30 @@ class UsersController < ApplicationController
     redirect_back fallback_location: edit_user_path(@user)
   end
 
+  def password
+    return redirect_to root_path if not cookies.signed[:user]
+    id = JSON.parse(cookies.signed[:user])["id"]
+    @user = User.find_by_id(id)
+  end
+
+  def change_password
+    return redirect_to root_path if not cookies.signed[:user]
+    id = JSON.parse(cookies.signed[:user])["id"]
+    @user = User.find_by_id(id)
+    submitted_password = params[:passwords][:password]
+    new_password = params[:passwords][:new_password]
+    confirm_password = params[:passwords][:confirm_password]
+    match = (BCrypt::Password.new(@user[:password]) == submitted_password)
+    confirmed = new_password == confirm_password
+    allswell = (match and confirmed)
+    if allswell then
+      hashword = BCrypt::Password.create(new_password)
+      if @user.update(:password=>hashword) then
+        redirect_to root_path
+      end
+    end
+  end
+
   def login
     redirect_to feed_path if cookies.signed[:user]
   end
