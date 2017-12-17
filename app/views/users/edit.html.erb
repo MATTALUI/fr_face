@@ -1,8 +1,43 @@
 <div class="screen container-fluid">
   <%= render 'shared/navbar' %>
   <div class="container middle-content">
-    <div class="mx-auto">
-      <%= image_tag @user[:user_image], class: "img-thumbnail"%>
+    <div class="row">
+      <%= render 'profile' %>
     </div>
+
+    <div class="row">
+      <%= form_with model: @user, url: user_path, method: :patch, class: "col-sm-6 offset-sm-3" do |editForm| %>
+
+        <div class="form-group">
+          <%= editForm.label :first_name %>
+          <%= editForm.text_field :first_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= editForm.label :last_name %>
+          <%= editForm.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= editForm.label :username %>
+          <%= editForm.text_field :username, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= editForm.label :about_you %>
+          <%= editForm.text_area :description, class: "form-control", rows: 4 %>
+        </div>
+
+        <div class="form-group">
+          <%= editForm.label "Profile image URL" %>
+          <%= editForm.text_field :user_image, class: "form-control" %>
+        </div>
+
+        <%= editForm.submit "Save Profile", class: "btn btn-primary" %>
+
+      <% end %>
+      <br/>
+    </div>
+
   </div>
 </div>

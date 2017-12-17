@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       user.delete(:confirm_password)
       hashword = BCrypt::Password.create(user[:password])
       user[:password] = hashword
-      @user = User.new(new_user_params)
+      @user = User.new(user_params)
       if @user.save then
         token = JSON.generate({
           :id => @user[:id],
@@ -44,6 +44,13 @@ class UsersController < ApplicationController
     puts "params[:id]: #{params[:id]}"
     return redirect_to edit_user_path(:id=>id) if id.to_i != params[:id].to_i
     @user = User.find_by_id(id)
+  end
+
+  def update
+    id = JSON.parse(cookies.signed[:user])["id"]
+    @user = User.find_by_id(id)
+    @user.update(user_params)
+    redirect_back fallback_location: edit_user_path(@user)
   end
 
   def login
@@ -78,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   private
-    def new_user_params
-      return params.require(:user).permit(:first_name, :last_name, :email, :password)
+    def user_params
+      return params.require(:user).permit(:first_name, :last_name, :email, :password, :username, :description, :user_image, :gender)
     end
 end

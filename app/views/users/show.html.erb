@@ -5,13 +5,11 @@
     <div class="row">
       <%= render 'profile' %>
     </div>
-    <!-- <hr/> -->
     <br/>
 
     <% if @user.id == @relevant_user.id %>
       <br/>
       <%= render 'shared/new_post_form'%>
-
     <% end %>
     <hr/>
     <br/>
