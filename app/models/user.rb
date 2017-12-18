@@ -1,6 +1,20 @@
 class User < ApplicationRecord
   has_many :posts
-  has_many :friendships
+  # has_many :friendships
+  # has_many :friends, through: :friendships
+  scope :friends, -> (id) {
+    friends = []
+    @friendships_1 = Friendship.where(:friend_1=>id)
+    @friendships_2 = Friendship.where(:friend_2=>id)
+    @friendships_1.each { |friendship|
+      friends.push(User.find(friendship[:friend_2]))
+    }
+    @friendships_2.each { |friendship|
+      friends.push(User.find(friendship[:friend_1]))
+    }
+    puts friends
+    friends
+  }
 
 
   validates :first_name, presence: true

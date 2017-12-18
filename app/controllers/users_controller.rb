@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     id = JSON.parse(cookies.signed[:user])["id"]
     @user = User.find_by_id(id)
     @relevant_user = User.find_by_id(params[:id])
+    @friends = User.friends(@relevant_user[:id])
   end
 
   def edit

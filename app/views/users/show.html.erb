@@ -5,7 +5,12 @@
     <div class="row">
       <%= render 'profile' %>
     </div>
-    <br/>
+    <div class="row profileAction">
+      <% if @user.id != @relevant_user.id then %>
+        <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn bg-info" %>
+      <% end %>
+    </div>
+
 
     <% if @user.id == @relevant_user.id %>
       <br/>
@@ -23,6 +28,30 @@
             <%= post[:body] %>
           </p>
       </div>
+      <% end %>
+    </div>
+    <br/>
+    <hr/>
+
+    <!-- <a href="/poop" class="card" style="width: 20rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </a> -->
+
+    <div class="row">
+      <% @friends.each do |friend| %>
+        <%= link_to user_path(friend), class: "card col-sm-3" do %>
+          <%= image_tag friend[:user_image], class: "Card image cap profilePic" %>
+          <div class="card-body">
+            <p class="card-text">
+              <%= "#{friend[:first_name]} #{friend[:last_name]}" %>
+            </p>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
