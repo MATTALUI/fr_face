@@ -19,6 +19,20 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Friend Requests (<%= @user.requests_received.length %>)
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <% @user.requests_received.each do |request| %>
+              <% if request[:request_type] == "friend" %>
+                <% requester = User.find(request[:sender_id]) %>
+                <p class="dropdown-item"><%= "#{requester[:first_name]}" %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

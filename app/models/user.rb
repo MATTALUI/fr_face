@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :posts
+  has_many :requests_received, foreign_key: "receiver_id", class_name: "Request"
+  has_many :requests_from, through: :requests_received, :source => :requesters
+  has_many :requests_sent, foreign_key: "sender_id", class_name: "Request"
   # has_many :friendships
   # has_many :friends, through: :friendships
   scope :friends, -> (id) {
@@ -12,7 +15,6 @@ class User < ApplicationRecord
     @friendships_2.each { |friendship|
       friends.push(User.find(friendship[:friend_1]))
     }
-    puts friends
     friends
   }
 
