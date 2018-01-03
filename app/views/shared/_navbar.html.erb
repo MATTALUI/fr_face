@@ -19,20 +19,39 @@
           <% end %>
         </li>
 
+
+        <% friend_requests = @user.requests_received.reject {|request| request[:request_type] != "friend"} %>
         <li class="nav-item dropdown">
           <a class="nav-link active" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">
             <span>
               <i class="material-icons">supervisor_account</i>
-              (<%= @user.requests_received.length %>)
+              <% if friend_requests.length > 0 %>
+                <span class="notice-count"><%= @user.requests_received.length %></span>
+              <% end %>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <% @user.requests_received.each do |request| %>
-              <% if request[:request_type] == "friend" %>
-                <% requester = User.find(request[:sender_id]) %>
-                <p class="dropdown-item"><%= "#{requester[:first_name]}" %></p>
+            <% if friend_requests.length == 0 %>
+              <p class="dropdown-item">You do not have any friend requests.</p>
+            <% else %>
+              <% friend_requests.each do |request| %>
+                  <% requester = User.find(request[:sender_id]) %>
+                  <p class="dropdown-item"><%= "#{requester[:first_name]}" %></p>
               <% end %>
             <% end %>
+
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>
+              <i class="material-icons">message</i>
+              <span class="notice-count">3</span>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <p class="dropdown-item">Messages</p>
           </div>
         </li>
 
