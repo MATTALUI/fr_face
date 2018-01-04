@@ -39,7 +39,7 @@
                   <p class="dropdown-item">
                     <%= link_to "#{requester[:first_name]} #{requester[:last_name]}", user_path(requester) %> wants to be your friend.
                     <%= button_to "Confirm", new_friend_path(requester), method: :post, class: "btn btn-primary c-d" %>
-                    <%=link_to "Ignore", "/ignoreurl", class: "btn btn-primary c-d" %>
+                    <%= button_to "Deny", deny_friend_request_path(requester), method: :delete, class: "btn btn-primary c-d" %>
                 </p>
               <% end %>
             <% end %>

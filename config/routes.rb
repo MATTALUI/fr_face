@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/users/:id/friend', to: 'friendships#create', as: 'new_friend'
   delete '/users/:id/friend/delete', to: 'friendships#delete', as: 'delete_friend'
   post '/users/:id/requests/friend', to: 'requests#create_friendship', as:'friend_request'
+  delete '/users/:id/requests/friend', to: 'requests#delete_friendship', as:'deny_friend_request'
   post '/posts/new', to: 'posts#create', as: 'posts'
   resources :users
 
