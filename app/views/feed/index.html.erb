@@ -5,7 +5,23 @@
     <br/>
     <%= render 'shared/new_post_form'%>
     <hr/>
-    
+
+    <div class="row">
+      <% @all_posts.each do |post| %>
+        <% poster = User.find_by_id(post[:user_id])%>
+        <div class="col-sm-8 offset-sm-2 post">
+          <h6 class="postHead"><%="#{poster[:first_name]} #{poster[:last_name]}"%></h6>
+          <p class="postBody">
+            <%= post[:body] %>
+            <br/>
+            <span class="timestamp">
+              <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
+            </span>
+          </p>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 
 </div>
