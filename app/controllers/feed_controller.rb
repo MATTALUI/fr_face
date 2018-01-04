@@ -6,8 +6,8 @@ class FeedController < ApplicationController
     end
     id = JSON.parse(cookies.signed[:user])["id"]
     @user = User.find_by_id(id)
-    @user.requests_from.each { |post|
-      puts post.attributes
-    }
+    # @user.requests_from.each { |post|
+    #   puts post.attributes
+    # }
   end
 end

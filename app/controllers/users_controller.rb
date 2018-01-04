@@ -41,8 +41,6 @@ class UsersController < ApplicationController
   def edit
     return redirect_to root_path if not cookies.signed[:user]
     id = JSON.parse(cookies.signed[:user])["id"]
-    puts "id: #{id}"
-    puts "params[:id]: #{params[:id]}"
     return redirect_to edit_user_path(:id=>id) if id.to_i != params[:id].to_i
     @user = User.find_by_id(id)
   end

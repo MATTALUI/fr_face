@@ -36,7 +36,11 @@
             <% else %>
               <% friend_requests.each do |request| %>
                   <% requester = User.find(request[:sender_id]) %>
-                  <p class="dropdown-item"><%= "#{requester[:first_name]}" %></p>
+                  <p class="dropdown-item">
+                    <%= link_to "#{requester[:first_name]} #{requester[:last_name]}", user_path(requester) %> wants to be your friend.
+                    <%= button_to "Confirm", new_friend_path(requester), method: :post, class: "btn btn-primary c-d" %>
+                    <%=link_to "Ignore", "/ignoreurl", class: "btn btn-primary c-d" %>
+                </p>
               <% end %>
             <% end %>
 
