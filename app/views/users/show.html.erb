@@ -32,6 +32,10 @@
           <h6 class="postHead"><%= "#{@relevant_user[:first_name]} #{@relevant_user[:last_name]}"%></h6>
           <p class="postBody">
             <%= post[:body] %>
+            <br/>
+            <span class="timestamp">
+              <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
+            </span>
           </p>
       </div>
       <% end %>
