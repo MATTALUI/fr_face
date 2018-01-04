@@ -17,4 +17,9 @@ class FriendshipsController < ApplicationController
       redirect_back fallback_location: root_path
     end
   end
+
+  def delete
+    puts "delete friend!"
+    redirect_to root_path
+  end
 end
