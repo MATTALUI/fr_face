@@ -36,6 +36,8 @@ class UsersController < ApplicationController
     @user = User.find_by_id(id)
     @relevant_user = User.find_by_id(params[:id])
     @friends = User.friends(@relevant_user[:id])
+    @are_friends = (@friends.index{|friend| friend[:id] == @user[:id]} != nil)
+    puts @are_friends
   end
 
   def edit

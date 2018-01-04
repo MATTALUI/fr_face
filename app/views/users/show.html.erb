@@ -7,7 +7,11 @@
     </div>
     <div class="row profileAction">
       <% if @user.id != @relevant_user.id then %>
-        <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn bg-info" %>
+        <% if @are_friends%>
+          <%= button_to "Stop Being Friends", "/stop/being/friends", method: :delete, class: "btn bg-info" %>
+        <% else %>
+          <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn bg-info" %>
+        <% end %>
       <% end %>
     </div>
 
