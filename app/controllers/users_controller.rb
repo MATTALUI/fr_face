@@ -37,7 +37,13 @@ class UsersController < ApplicationController
     @relevant_user = User.find_by_id(params[:id])
     @friends = User.friends(@relevant_user[:id])
     @are_friends = (@friends.index{|friend| friend[:id] == @user[:id]} != nil)
-    puts @are_friends
+    if not @are_friends then
+      request_sent = Request.where({:sender_id => @user[:id], :receiver_id => @relevant_user[:id]}).first
+      @requests_pending = (request_sent != nil)
+      puts
+      puts @requests_pending
+      puts
+    end
   end
 
   def edit
