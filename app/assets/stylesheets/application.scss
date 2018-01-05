@@ -87,3 +87,35 @@
 .profileAction>a,.profileAction>input{
   margin-left: 1em;
 }
+// .messagePreview * {
+//   text-decoration: none !important;
+// }
+// .messagePreview * :hover{
+//   text-decoration: none !important;
+// }
+// .messagePreview * :link{
+//   text-decoration: none !important;
+// }
+.previewHead{
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: lightblue;
+  margin-bottom: 0;
+}
+// .previewHead>a:hover, .previewBody>a:link{
+//   text-decoration: none !important;
+// }
+// p.previewHead:hover,p.previewBody:hover{
+//   text-decoration: none !important;
+// }
+a:hover, a:link{
+  text-decoration: none !important;
+}
+.previewBody{
+  background-color: rgb(245, 245, 245);
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-top: 0;
+  padding-bottom: .1em;
+  margin-bottom: 0;
+}

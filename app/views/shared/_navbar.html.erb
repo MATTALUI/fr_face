@@ -46,17 +46,26 @@
 
           </div>
         </li>
-        
+
 
         <li class="nav-item dropdown">
           <a class="nav-link active" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>
               <i class="material-icons">message</i>
-              <span class="notice-count">3</span>
+              <% if @user.unread_messages.length > 0 %>
+                <span class="notice-count"><%= @user.unread_messages.length %></span>
+              <% end %>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <p class="dropdown-item">Messages</p>
+            <% @user.unread_messages.each do |message| %>
+              <%= link_to conversation_path(message.sender) do %>
+              <div class="dropdown-item messagePreview">
+                <p class="previewHead"><%= "#{message.sender[:first_name]} #{message.sender[:last_name]}"%></p>
+                <p class="previewBody "><%= message[:body] %><p>
+              </div>
+              <% end%>
+            <% end %>
           </div>
         </li>
 
