@@ -32,6 +32,11 @@
   background-color: white;
   margin-top: 3.5em;
 }
+.middle-content-fixed{
+  height: 90vh;
+  background-color: white;
+  margin-top: 3.5em;
+}
 .center-ban{
   min-height: 100vh;
   background-color: rgb(249,249,249);
@@ -87,27 +92,12 @@
 .profileAction>a,.profileAction>input{
   margin-left: 1em;
 }
-// .messagePreview * {
-//   text-decoration: none !important;
-// }
-// .messagePreview * :hover{
-//   text-decoration: none !important;
-// }
-// .messagePreview * :link{
-//   text-decoration: none !important;
-// }
 .previewHead{
   padding-left: 1em;
   padding-right: 1em;
   background-color: lightblue;
   margin-bottom: 0;
 }
-// .previewHead>a:hover, .previewBody>a:link{
-//   text-decoration: none !important;
-// }
-// p.previewHead:hover,p.previewBody:hover{
-//   text-decoration: none !important;
-// }
 a:hover, a:link{
   text-decoration: none !important;
 }
@@ -118,4 +108,11 @@ a:hover, a:link{
   margin-top: 0;
   padding-bottom: .1em;
   margin-bottom: 0;
+}
+.all-conversations{
+  border-right: solid;
+  border-width: 2px;
+  // background-color: pink;
+  // height: 100%;
+  // overflow: scroll;
 }

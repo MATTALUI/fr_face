@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/feed', to: 'feed#index'
-  get '/conversation', to: 'conversations#index', as: 'conversations'
-  get '/conversation/:id', to: 'conversations#show', as: 'conversation'
+  get '/conversations', to: 'conversations#index', as: 'conversations'
+  get '/conversations/:id', to: 'conversations#show', as: 'conversation'
   get '/users/login', to: 'users#login', as: 'login'
   get '/users/logout', to: 'users#logout', as: 'logout'
   get '/users/password', to: 'users#password'
