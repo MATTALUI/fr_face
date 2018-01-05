@@ -40,6 +40,13 @@ class UsersController < ApplicationController
     if not @are_friends then
       request_sent = Request.where({:sender_id => @user[:id], :receiver_id => @relevant_user[:id]}).first
       @requests_pending = (request_sent != nil)
+      if not @requests_pending then
+        @has_friend_request_from = false
+        friend_requests = @user.requests_received.reject {|request| request[:request_type] != "friend"}
+        friend_requests.each { |request|
+          @has_friend_request_from = true if request[:sender_id] == @relevant_user[:id]
+        }
+      end
     end
   end
 

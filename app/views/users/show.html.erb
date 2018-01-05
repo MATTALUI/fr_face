@@ -12,6 +12,8 @@
           <%= button_to "Stop Being Friends", delete_friend_path(@relevant_user), method: :delete, class: "btn btn-primary" %>
         <% elsif @requests_pending %>
           <button class= "btn btn-primary disabled">Friend Request Pending</button>
+        <% elsif @has_friend_request_from %>
+          <%= button_to "Confirm Friend Request", new_friend_path(@relevant_user), method: :post, class: "btn btn-primary c-d" %>
         <% else %>
           <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn btn-primary" %>
         <% end %>
