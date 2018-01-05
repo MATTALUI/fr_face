@@ -13,6 +13,15 @@ class ConversationsController < ApplicationController
     @user = User.find(id)
     @conversations = assemble_conversations(id)
     @conversation_with = User.find(params[:id])
+    @conversation = []
+    from = Message.where({:sender_id => id, :receiver_id => @conversation_with[:id]})
+    to = Message.where({:sender_id => @conversation_with[:id], :receiver_id => id})
+    @conversation.concat(from)
+    @conversation.concat(to)
+    @conversation.sort! {|pa, pb|
+      pa[:created_at] <=> pb[:created_at]
+    }
+
   end
 
   private

@@ -4,12 +4,19 @@
   <div class="container middle-content-fixed">
     <div class="row fullHeight">
       <%= render 'all_conversations' %>
-      <div class="col-sm-7">
+      <div class="col-sm-7 fullHeight bg-light">
         <br/>
         <h3>
           <%= "Your Conversation With #{@conversation_with[:first_name]} #{@conversation_with[:last_name]}" %>
         </h3>
         <hr/>
+        <% @conversation.each do |message| %>
+          <% if message.sender == @user %>
+            <p><%= "left: #{message[:body]}" %></p>
+          <% else %>
+            <p><%= "right: #{message[:body]}" %></p>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
