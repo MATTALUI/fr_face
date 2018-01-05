@@ -111,8 +111,19 @@ a:hover, a:link{
 }
 .all-conversations{
   border-right: solid;
-  border-width: 2px;
+  border-width: 1px;
   // background-color: pink;
-  // height: 100%;
-  // overflow: scroll;
+  height: 100%;
+  overflow: scroll;
+}
+.card.convo{
+  background-color: rgb(244,244,244);
+  display: flex;
+  flex-direction: row;
+}
+.card.convo:hover{
+  background-color: rgb(236,236,236);
+}
+.fullHeight{
+  height: 100%;
 }

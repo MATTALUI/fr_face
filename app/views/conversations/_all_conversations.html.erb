@@ -1,9 +1,11 @@
 <div class="col-sm-5 all-conversations">
+  <br/>
   <h3>All Conversations</h3>
-  <div class="row">
+  <hr/>
+  <div class="row ">
     <% @conversations.each do |friend| %>
-      <%= link_to user_path(friend), class: "card col-sm-12" do %>
-        <%= image_tag friend[:user_image], class: "Card image cap profilePic" %>
+      <%= link_to conversation_path(friend), class: "card col-sm-12 convo" do %>
+        <%= image_tag friend[:user_image], class: "card image cap profilePic" %>
         <div class="card-body">
           <p class="card-text">
             <%= "#{friend[:first_name]} #{friend[:last_name]}" %>
