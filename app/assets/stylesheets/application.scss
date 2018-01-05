@@ -82,5 +82,8 @@
   // background-color: rgb(79,84,89);
 }
 .profileAction{
-  background-color: lightblue;
+  background-color: lightgray;
+}
+.profileAction>a,.profileAction>input{
+  margin-left: 1em;
 }

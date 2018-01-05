@@ -7,13 +7,17 @@
     </div>
     <div class="row profileAction">
       <% if @user.id != @relevant_user.id then %>
+
         <% if @are_friends%>
-          <%= button_to "Stop Being Friends", delete_friend_path(@relevant_user), method: :delete, class: "btn bg-info" %>
+          <%= button_to "Stop Being Friends", delete_friend_path(@relevant_user), method: :delete, class: "btn btn-primary" %>
         <% elsif @requests_pending %>
-          <button class= "btn bg-info disabled">Friend Request Pending</button>
+          <button class= "btn btn-primary disabled">Friend Request Pending</button>
         <% else %>
-          <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn bg-info" %>
+          <%= button_to "Send Friend Request", friend_request_path, method: :post, class: "btn btn-primary" %>
         <% end %>
+
+        <%= link_to "Message #{@relevant_user[:first_name]}", conversation_path(@relevant_user), class: "btn btn-primary" %>
+
       <% end %>
     </div>
 

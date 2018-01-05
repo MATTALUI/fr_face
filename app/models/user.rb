@@ -3,8 +3,13 @@ class User < ApplicationRecord
   has_many :requests_received, foreign_key: "receiver_id", class_name: "Request"
   has_many :requests_from, through: :requests_received, :source => :requesters
   has_many :requests_sent, foreign_key: "sender_id", class_name: "Request"
-  # has_many :friendships
-  # has_many :friends, through: :friendships
+  has_many :messages_sent, foreign_key: "sender_id", class_name: "Message"
+  has_many :messages_received, foreign_key: "receiver_id", class_name: "Message"
+  has_many :unread_messages, -> { where({:read => false}) }, foreign_key: "receiver_id", class_name: "Message"
+
+
+
+
   scope :friends, -> (id) {
     friends = []
     @friendships_1 = Friendship.where(:friend_1=>id)
