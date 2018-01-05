@@ -1,0 +1,16 @@
+<div class="screen">
+  <%= render 'shared/navbar' %>
+
+  <div class="container middle-content-fixed">
+    <div class="row fullHeight">
+      <%= render 'all_conversations' %>
+      <div class="col-sm-7">
+        <br/>
+        <h3>
+          <%= "Your Conversation With #{@conversation_with[:first_name]} #{@conversation_with[:last_name]}" %>
+        </h3>
+        <hr/>
+      </div>
+    </div>
+  </div>
+</div>

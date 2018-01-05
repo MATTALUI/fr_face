@@ -7,9 +7,9 @@
       <%= link_to conversation_path(friend), class: "card col-sm-12 convo" do %>
         <%= image_tag friend[:user_image], class: "card image cap profilePic" %>
         <div class="card-body">
-          <p class="card-text">
+          <h4 class="card-text">
             <%= "#{friend[:first_name]} #{friend[:last_name]}" %>
-          </p>
+          </h4>
         </div>
       <% end %>
     <% end %>
