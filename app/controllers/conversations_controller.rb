@@ -28,6 +28,18 @@ class ConversationsController < ApplicationController
     }
   end
 
+  def create
+    return redirect_to root_path if not cookies.signed[:user]
+    id = JSON.parse(cookies.signed[:user])["id"]
+    receiver = params[:id].to_i
+    message = Message.new({
+      :sender_id => id,
+      :receiver_id => receiver,
+      :body => params[:message][:body]
+      })
+    redirect_back fallback_location: root_path if message.save
+  end
+
   private
   def assemble_conversations(id)
     me = User.find(id)

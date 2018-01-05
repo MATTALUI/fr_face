@@ -10,13 +10,25 @@
           <%= "Your Conversation With #{@conversation_with[:first_name]} #{@conversation_with[:last_name]}" %>
         </h3>
         <hr/>
-        <% @conversation.each do |message| %>
-          <% if message.sender == @user %>
-            <p><%= "left: #{message[:body]}" %></p>
-          <% else %>
-            <p><%= "right: #{message[:body]}" %></p>
-          <% end %>
-        <% end %>
+        <div class="showConvo">
+          <div class="convo">
+            <% @conversation.each do |message| %>
+              <% if message.sender == @user %>
+                <p><%= "left: #{message[:body]}" %></p>
+              <% else %>
+                <p><%= "right: #{message[:body]}" %></p>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="convoController">
+            <%= form_with scope: :message, url: conversation_path(@conversation_with), method: :post, class: "container", local: true do |message| %>
+              <div class="form-group row">
+                <%= message.text_field :body, class: "form-control col-sm-10" %>
+                <%= message.submit "Send", class: " btn btn-primary col-sm-2"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

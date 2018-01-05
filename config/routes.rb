@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/feed', to: 'feed#index'
   get '/conversations', to: 'conversations#index', as: 'conversations'
   get '/conversations/:id', to: 'conversations#show', as: 'conversation'
+  post '/conversations/:id', to: 'conversations#create'
   get '/users/login', to: 'users#login', as: 'login'
   get '/users/logout', to: 'users#logout', as: 'logout'
   get '/users/password', to: 'users#password'
