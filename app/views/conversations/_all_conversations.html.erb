@@ -14,4 +14,21 @@
       <% end %>
     <% end %>
   </div>
+  <% if @new_convo_friends.length > 0 %>
+    <br/>
+    <h3>Start A Conversation</h3>
+    <hr/>
+    <div class="row">
+      <% @new_convo_friends.each do |friend| %>
+        <%= link_to conversation_path(friend), class: "card col-sm-12 convo" do %>
+          <%= image_tag friend[:user_image], class: "card image cap profilePic" %>
+          <div class="card-body">
+            <h4 class="card-text">
+              <%= "#{friend[:first_name]} #{friend[:last_name]}" %>
+            </h4>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

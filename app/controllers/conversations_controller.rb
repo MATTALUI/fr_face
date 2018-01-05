@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
     id = JSON.parse(cookies.signed[:user])["id"]
     @user = User.find(id)
     @conversations = assemble_conversations(id)
+    @new_convo_friends = assemble_new_comvo_friends(id)
   end
 
   def show
@@ -12,6 +13,7 @@ class ConversationsController < ApplicationController
     return redirect_to root_path if params[:id].to_i == id
     @user = User.find(id)
     @conversations = assemble_conversations(id)
+    @new_convo_friends = assemble_new_comvo_friends(id)
     @conversation_with = User.find(params[:id])
     @conversation = []
     from = Message.where({:sender_id => id, :receiver_id => @conversation_with[:id]})
@@ -42,5 +44,10 @@ class ConversationsController < ApplicationController
     }
     conversations.reject!{|user| user == me}
     return conversations
+  end
+  def assemble_new_comvo_friends(id)
+    friends = User.friends(id)
+    friends.reject!{|friend| @conversations.index(friend) != nil}
+    return friends
   end
 end
