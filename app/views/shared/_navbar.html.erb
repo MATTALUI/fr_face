@@ -58,6 +58,11 @@
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <% if @user.unread_messages.length == 0 %>
+              <div class="dropdown-item">
+                <span>You have no unread messages.</span>
+              </div>
+            <% end %>
             <% @user.unread_messages.each do |message| %>
               <%= link_to conversation_path(message.sender) do %>
               <div class="dropdown-item messagePreview">

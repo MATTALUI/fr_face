@@ -21,7 +21,9 @@ class ConversationsController < ApplicationController
     @conversation.sort! {|pa, pb|
       pa[:created_at] <=> pb[:created_at]
     }
-
+    @conversation.each { |message|
+      message.update({:read => true}) if not message[:read]
+    }
   end
 
   private
