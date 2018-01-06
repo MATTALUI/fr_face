@@ -11,12 +11,20 @@
         </h3>
         <hr/>
         <div class="showConvo">
-          <div class="convo">
+          <div class="conversation">
             <% @conversation.each do |message| %>
               <% if message.sender == @user %>
-                <p><%= "left: #{message[:body]}" %></p>
+                <div>
+                  <div class="sent Message">
+                    <p><%= message[:body] %></p>
+                  </div>
+                </div>
               <% else %>
-                <p><%= "right: #{message[:body]}" %></p>
+                <div>
+                  <div class= "received Message">
+                    <p><%= message[:body] %></p>
+                  </div>
+                </div>
               <% end %>
             <% end %>
           </div>

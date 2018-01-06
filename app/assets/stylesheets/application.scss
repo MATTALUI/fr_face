@@ -112,7 +112,6 @@ a:hover, a:link{
 .all-conversations{
   border-right: solid;
   border-width: 1px;
-  // background-color: pink;
   height: 100%;
   overflow: scroll;
 }
@@ -127,10 +126,50 @@ a:hover, a:link{
 .fullHeight{
   height: 100%;
 }
-.messageForm{
-  margin-right: 0;
-  width: 80px;
+// .messageForm{
+//   // margin-right: 0;
+//   // width: 80px;
+// }
+// .messageSend{
+//   // float: right;
+// }
+.conversation{
+  overflow: auto;
+  height: 30.7em;
+  width: 100%;
 }
-.messageSend{
+.convoController{
+  margin-top: 2px;
+  z-index: 2;
+  position: absolute;
+  width: 95%;
+  bottom: .7em;
+}
+.Message{
+  max-width: 50%;
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  border-radius: 10px;
+  margin-top: 2px;
+  display: inline-block;
+}
+.Message > p{
+  margin-bottom: 0;
+}
+.sent{
+  background-color: rgb(222,222,222);
+  float: left;
+  clear: both;
+  // margin-right: auto;
+  // float: left;
+}
+.received{
+  background-color: rgb(150,150, 222);
   float: right;
+  clear: both;
+  // margin-left: 50%;
+  // margin-right: 0;
+  // float: right;
 }

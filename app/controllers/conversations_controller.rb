@@ -24,7 +24,7 @@ class ConversationsController < ApplicationController
       pa[:created_at] <=> pb[:created_at]
     }
     @conversation.each { |message|
-      message.update({:read => true}) if not message[:read]
+      message.update({:read => true}) if not message[:read] and (message[:receiver_id] == @user[:id])
     }
   end
 
