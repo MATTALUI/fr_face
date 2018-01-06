@@ -97,6 +97,7 @@
   padding-right: 1em;
   background-color: lightblue;
   margin-bottom: 0;
+  border-radius: 6px 6px 0 0;
 }
 a:hover, a:link{
   text-decoration: none !important;
@@ -113,7 +114,7 @@ a:hover, a:link{
   border-right: solid;
   border-width: 1px;
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
 }
 .card.convo{
   background-color: rgb(244,244,244);
@@ -126,16 +127,9 @@ a:hover, a:link{
 .fullHeight{
   height: 100%;
 }
-// .messageForm{
-//   // margin-right: 0;
-//   // width: 80px;
-// }
-// .messageSend{
-//   // float: right;
-// }
 .conversation{
   overflow: auto;
-  height: 30.7em;
+  height: 31em;
   width: 100%;
 }
 .convoController{
@@ -144,6 +138,8 @@ a:hover, a:link{
   position: absolute;
   width: 95%;
   bottom: .7em;
+  // border-top: solid;
+  // border-width: 1px;
 }
 .Message{
   max-width: 50%;
@@ -172,4 +168,13 @@ a:hover, a:link{
   // margin-left: 50%;
   // margin-right: 0;
   // float: right;
+}
+.message-link{
+  text-align: right;
+  font-size: .8em;
+  padding-right: 1em;
+  margin-bottom: 0;
+}
+.message-separator{
+  margin-top: 1px;
 }
