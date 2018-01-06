@@ -1,23 +1,6 @@
 @import "material_icons";
 @import "bootstrap";
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
 
- */
- //= require bootstrap
-// button.btn{
-//   color: white;
-// }
 .c-d{
   float: right;
   margin-right: 6px;
@@ -58,14 +41,34 @@
 .timestamp{
   font-size: .6em;
   margin-bottom: 0;
+  position: relative;
+  top: -.7em;
 }
 
-
+.post-thumbnail{
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  // border-radius: 0 0 1em 1em;
+  margin-right: .6em;
+  margin-top: 2px;
+}
 .postHead{
   // background-color: rgb(230,230,230);
   background-color: lightblue;
   padding-left: .5em;
   padding-right: .5em;
+  display: flex;
+  flex-direction: row;
+}
+.postHead a{
+  color: black;
+}
+.postHead a:hover{
+  color: rgb(69,69,69);
+}
+.postHead h6{
+  margin-bottom: 0;
 }
 .post{
   background-color: rgb(245,245,247);

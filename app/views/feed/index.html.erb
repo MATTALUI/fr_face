@@ -10,13 +10,22 @@
       <% @all_posts.each do |post| %>
         <% poster = User.find_by_id(post[:user_id])%>
         <div class="col-sm-8 offset-sm-2 post">
-          <h6 class="postHead"><%="#{poster[:first_name]} #{poster[:last_name]}"%></h6>
+          <div class="postHead">
+            <%= image_tag poster[:user_image], class: "post-thumbnail"%>
+            <div>
+              <h6 >
+                <%#"#{poster[:first_name]} #{poster[:last_name]}"%>
+                <%= link_to "#{poster[:first_name]} #{poster[:last_name]}", user_path(poster), class: "user-link"%>
+                <br/>
+                <span class="timestamp">
+                  <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
+                </span>
+              </h6>
+            </div>
+          </div>
           <p class="postBody">
             <%= post[:body] %>
             <br/>
-            <span class="timestamp">
-              <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
-            </span>
           </p>
         </div>
       <% end %>
