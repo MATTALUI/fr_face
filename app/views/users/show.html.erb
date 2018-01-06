@@ -34,16 +34,25 @@
 
     <div class="row">
       <% @relevant_user.posts.reverse.each do |post| %>
-        <div class="col-sm-8 offset-sm-2 post">
-          <h6 class="postHead"><%= "#{@relevant_user[:first_name]} #{@relevant_user[:last_name]}"%></h6>
-          <p class="postBody">
-            <%= post[:body] %>
-            <br/>
-            <span class="timestamp">
-              <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
-            </span>
-          </p>
+      <div class="col-sm-8 offset-sm-2 post">
+        <div class="postHead">
+          <%= image_tag @relevant_user[:user_image], class: "post-thumbnail"%>
+          <div>
+            <h6 >
+              <%= link_to "#{@relevant_user[:first_name]} #{@relevant_user[:last_name]}", user_path(@relevant_user), class: "user-link"%>
+              <br/>
+              <span class="timestamp">
+                <%= distance_of_time_in_words(post[:created_at], DateTime.now) + " ago" %>
+              </span>
+            </h6>
+          </div>
+        </div>
+        <p class="postBody">
+          <%= post[:body] %>
+          <br/>
+        </p>
       </div>
+
       <% end %>
     </div>
     <br/>
