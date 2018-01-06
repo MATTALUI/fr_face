@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :messages_sent, foreign_key: "sender_id", class_name: "Message"
   has_many :messages_received, foreign_key: "receiver_id", class_name: "Message"
   has_many :unread_messages, -> { where({:read => false}) }, foreign_key: "receiver_id", class_name: "Message"
+  has_many :comments_made, foreign_key: "user_id", class_name: "Comment"
 
 
 
